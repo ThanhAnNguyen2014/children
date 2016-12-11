@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--th:replace="layout::site-head"-->
+<head>
+    <title>Baby Time News</title>
+    <header th:replace="layout::site-header"/>
+</head>
+
+<body>
+
+    <div th:replace="layout::img-load"></div>
+    <!-- search modal -->
+    <div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
+        <div class="widget widget_search">
+            <form method="get" class="searchform form-inline" action="/">
+                <div class="form-group">
+                    <input type="text" value="" name="search" class="form-control" placeholder="Search keyword"
+                           id="modal-search-input"/>
+                </div>
+                <button type="submit" class="theme_button">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- wrappers for visual page editor and boxed version of template -->
+    <div id="canvas">
+        <div id="box_wrapper">
+            <div class="page_topline">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4 ">
+                            <div class="login-controls">
+                                <div class="dropdown">
+                                    <a class="login-btn dropdown-toggle" data-toggle="dropdown">
+                                        <i class="rt-icon2-lock-open-outline"></i>Login
+                                    </a>
+                                    <div class="login-form-wrap">
+                                        <form class="form-horizontal dropdown-menu" method="post" action="/">
+                                            <input type="text" class="form-control" id="login" placeholder="Login"/>
+                                            <input type="password" class="form-control" id="pwd" placeholder="Password"/>
+                                            <a href="#" class="forg-pass">Forgot Password?</a>
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="checkbox"/><label for="checkbox">
+                                                Remember</label>
+                                            </div>
+                                            <button type="submit" id="login_form_submit" name="login_submit"
+                                                    class="btn-default btn-type1">Login
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <a href="#" class="register-btn dropdown-toggle" data-toggle="dropdown">
+                                    <i class="rt-icon2-user-outline"></i>Register
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 text-center second-column">
+                            <div class="widget widget_search">
+                                <form method="get" class="searchform form-inline" action="/">
+                                    <div class="form-group">
+                                        <label class="screen-reader-text" for="page_search">Search for:</label>
+                                        <input id="page_search" type="text" value="" name="search" class="form-control"
+                                               placeholder="Nhập từ khóa tìm kiếm"/>
+                                    </div>
+                                    <button type="submit" class="rt-icon2-zoom-outline">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 text-right third-column">
+                            <div class="address">
+                                <i class="rt-icon2-location-outline"></i> Số 1 Võ văn Ngân, Thủ Đức
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <header class="page_header header_white">
+                <div class="header-top">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="index.html">
+                                    <img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="Babysitter logo" class="top-logo"/>
+                                </a>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <div class="social-icons">
+                                    <a href="#" class="social-icon color-bg-icon rounded-icon soc-facebook"></a>
+                                    <a href="#" class="social-icon color-bg-icon rounded-icon soc-twitter"></a>
+                                    <a href="#" class="social-icon color-bg-icon rounded-icon soc-google"></a>
+                                    <a href="#" class="social-icon color-bg-icon rounded-icon soc-skype"></a>
+                                    <a href="#" class="social-icon color-bg-icon rounded-icon rt-icon2-youtube5"></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 text-right ">
+                                <div class="contact-info">
+                                    <div class="contact-number">
+                                        <span>08</span> 3896 8641
+                                    </div>
+                                    <div class="work-hours">
+                                        8:00 a.m. - 5:00 p.m.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <!-- main nav start -->
+                            <nav class="mainmenu_wrapper">
+                                <ul class="mainmenu sf-menu">
+                                    <li class="active">
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="calendar.html">Danh Mục</a>
+                                        <ul>
+                                            <li>
+                                                <a href="courses.html">Bài mới</a>
+                                            </li>
+                                            <li>
+                                                <a href="courses.html">Bài viết <span class="glyphicon glyphicon-heart"></span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="courses.html">DS Bài viết</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" >Chủ đề</a>
+                                        <ul >
+                                            <li th:each="p : ${chudes}">
+                                                <a href="#" th:text="${p.tenchude}"></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="gallery_fullwidth.html">Thư viện</a>
+                                        <ul>
+                                            <li>
+                                                <a href="courses.html">Hình ảnh</a>
+                                            </li>
+                                            <li>
+                                                <a href="courses.html">Thư viện Videos</a>
+                                            </li>
+                                            <li>
+                                                <a href="calculator.html">Videos Trò chơi</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="contacts.html">Liên Hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- eof main nav -->
+                            <div class="toggle_menu-wrap" data-spy="affix" data-offset-top="425">
+                                <span class="toggle_menu"><span></span></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <section class="intro_section page_mainslider ds">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img  src="../static/images/main-slide-4.jpg"  th:src="@{/images/main-slide-4.jpg}" alt=""/>
+
+                        </li>
+
+                        <li>
+                            <img src="../static/images/main-slide-2.jpg" th:src="@{images/main-slide-2.jpg}"  alt=""/>
+
+                        </li>
+
+                        <li>
+                            <img src="../static/images/main-slide-3.jpg" th:src="@{images/main-slide-3.jpg}"  alt=""/>
+
+                        </li>
+                    </ul>
+                </div> <!-- eof flexslider -->
+            </section>
+
+            <main class="page-content">
+                <section class="welcome">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p class="grand-hotel">Hello, Các bậc phụ huynh thân mếm!</p>
+                                <h3 class="poppins">
+                                    Xin chào các bạn đến với <span class="pink">Website Chúng Tôi</span>
+                                </h3>
+                                <p class="about-site">
+                                   Đến với website chúng, các bậc phụ huynh có thể tìm hiểu và lựa chọn cho con em của quý vị các trò chơi
+                                    phù hợp với lứa tuổi trẻ thơ, cùng với các bài hướng dẫn và các videos hướng dẫn
+                                    chơi cụ thể sinh động để bạn có thể hướng dẫn con em của mình một cách sinh động và dễ hiểu, để
+                                    các bé có thể tự tiếp thu được nhiều cái hay cũng như giúp các bé phát triển tư duy tốt hơn thông
+                                    qua các trò chơi được hướng dẫn.<br/><br/>
+
+                                    Đồng thời, chúng tôi còn giới thiệu cho quý vị các địa điểm vui chơi giải trí công cộng uy tính và chất lượng,
+                                    giúp quý vị có thể an tâm hơn khi các bé được thỏa thích vui chơi tại các địa điểm này !
+                                </p>
+                                <a href="#" class="btn-type1" >Thank You !</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 for-nannies">
+                                <p class="grand-hotel">Danh mục </p>
+                                <h3 class="poppins">Bài Viết <span class="pink">Mới</span></h3>
+                                <ul th:each="p:${post5new}">
+                                    <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-edit"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4 th:text="${p.tenbaiviet}"></h4>
+                                            <p th:text="${p.noidung}"></p>
+                                        </div>
+                                    </li>
+                                   <!-- <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-lightbulb3"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4>Create Profile vs Portfolio</h4>
+                                            <p>Ut labore et dolore magna aliquyam erat, sed diam voluptua vero eos et
+                                                accusam et justo duo dolores.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-watch"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4>Wait for Employers</h4>
+                                            <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                                                sit amet.</p>
+                                        </div>
+                                    </li>-->
+                                </ul>
+                            </div>
+                            <div class="col-md-6 for-parents">
+                                <p class="grand-hotel">Danh mục </p>
+                                <h3 class="poppins">Bài Viết <span>Cũ</span></h3>
+                                <ul>
+                                    <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-group-outline"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4>Choose Babysitter or Nanny</h4>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-eye-outline"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4>Pre-Screen Nanny</h4>
+                                            <p>Magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+                                                duo dolores.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="step-icon">
+                                            <i class="rt-icon2-message"></i>
+                                        </div>
+                                        <div class="step-descr">
+                                            <h4>Contact vs Hire</h4>
+                                            <p>Rebum stet clita kasd gubergren sea takimata sanctus lorem ipsum dolor
+                                                sit amet ipsum dolor.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="gallery">
+                    <div class="container">
+                        <h3 class="poppins"><span class="pink">g</span>a<span class="light-green">l</span><span
+                                class="turquoise">l</span><span class="pink">e</span>r<span class="light-green">i</span><span
+                                class="turquoise">e</span><span class="pink">s</span></h3>
+
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <div class="owl-carousel"
+                                     data-margin="0"
+                                     data-nav="false"
+                                     data-items="3"
+                                     data-themeclass="hover-scale"
+                                     data-loop="false"
+                                     data-dots="true"
+                                     data-center="false"
+                                     data-autoplay="false"
+                                     data-responsive-xs="1"
+                                     data-responsive-sm="2"
+                                     data-responsive-md="3"
+                                     data-responsive-lg="4"
+                                >
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="../static/images/image-0.jpg" th:src="@{/images/image-0.jpg}" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <br/>
+                                                    <h4>Lớn Khôn </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="../static/images/image-1.jpg" th:src="@{/images/image-1.jpg}" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <br/>
+                                                    <h4>Đoàn Kết </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="../static/images/image-2.jpg" th:src="@{/images/image-2.jpg}" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <br/>
+                                                    <h4>Tư Duy </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="../static/images/image-3.jpg"  th:src="@{/images/image-3.jpg}" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                   <br/>
+                                                    <h4>Hiếu Động </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-0.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <br/>
+                                                    <h4>Tài Năng </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-1.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <br/>
+                                                    <h4>Diam noumy eirmod </h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-2.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-2.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-3.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-3.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-0.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-0.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-1.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-1.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-2.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-2.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vertical-item">
+                                        <div class="item-media">
+                                            <img src="images/image-3.jpg" alt=""/>
+                                            <div class="media-links">
+                                                <div class="links-wrap">
+                                                    <a class="p-view prettyPhoto " title="" data-gal="prettyPhoto[gal]"
+                                                       href="images/image-3.jpg"></a>
+                                                    <a class="p-link" title="" href="#"></a>
+                                                    <h4>Diam noumy eirmod </h4>
+                                                    <a href="#" class="read-about">Read about us</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="testimonials parallax">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <i class="rt-icon2-quotes-left"></i>
+                                <div id="carousel-media" class="carousel slide testimonials-carousel"
+                                     data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-media" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-media" data-slide-to="1"></li>
+                                        <li data-target="#carousel-media" data-slide-to="2"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                sed diam nonumy eirmod tempor invidunt labore dolore magna aliquyam.
+                                            </p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4><a href="#">Shirry K. Lykins</a></h4>
+                                                    <p>
+                                                        Parent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <p>
+                                                Ullamco laboris nialiquid exea commodi consat.
+                                                Ut enim minim veniam norud exotation.
+                                            </p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4><a href="#">Shirry K. Lykins</a></h4>
+                                                    <p>
+                                                        Parent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                sed diam nonumy eirmod tempor invidunt labore dolore magna aliquyam.
+                                            </p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h4><a href="#">Shirry K. Lykins</a></h4>
+                                                    <p>
+                                                        Parent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="contacts">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <span class="rt-icon2-location-outline pink"></span>
+                                <p>Số 1, Võ Văn Ngân, Thủ Đức TP.HCM</p>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="rt-icon2-mail2 blue"></span>
+                                <a href="#">babytime@support.com</a>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="rt-icon2-phone-outline light-green"></span>
+                                <p>08 3896 8641, 0165 7768 971</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </main>
+
+            <footer class="page_footer">
+                <img src="images/logo-footer.png" alt="Babysitter logo" class="logo-footer"/>
+            </footer>
+            <section th:replace="layout::site-footer">
+            </section>
+
+        </div><!-- eof #box_wrapper -->
+    </div><!-- eof #canvas -->
+</body>
+</html>
