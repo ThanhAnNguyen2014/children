@@ -99,56 +99,8 @@
     <div class="row-fluid">
 
         <!-- start: Main Menu -->
-        <div id="sidebar-left" class="span2">
-            <div class="nav-collapse sidebar-nav">
-                <ul class="nav nav-tabs nav-stacked main-menu">
-                    <li>
-                        <a href="#"><i class="icon-dashboard"></i><span class="hidden-tablet"> Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="abc.html"><i class="icon-envelope"></i><span class="hidden-tablet"> Tin nhắn</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="listpost"><i class="icon-edit"></i><span class="hidden-tablet"> Quản lý bài viết</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="abc.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Quản lý video</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="abc.html"><i class="icon-briefcase"></i><span class="hidden-tablet"> Quản lý chủ đề</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="abc.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="abc.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> Quản lý trang chủ</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="abc.html"><i class="icon-lock"></i><span class="hidden-tablet"> Tài khoản</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div th:replace="adhome::ad-menu"></div>
         <!-- end: Main Menu -->
-
-        <noscript>
-            <div class="alert alert-block span10">
-                <h4 class="alert-heading">Warning!</h4>
-                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-            </div>
-        </noscript>
-
 
         <!-- start: Content -->
         <div id="content" class="span10">

@@ -95,9 +95,9 @@
 </div>
 <!-- start: Header -->
 
-<div class="container-fluid-full" th:include="adhome::ad-home">
-
-    <div id="content" class="span10" th:remove="adhome::ad-content">
+<div class="container-fluid-full" >
+    <div th:replace="adhome::ad-menu"></div>
+    <div id="content" class="span10" >
 
         <ul class="breadcrumb">
             <li>
