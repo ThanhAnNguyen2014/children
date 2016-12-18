@@ -211,11 +211,11 @@
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Chọn ảnh: </label><br/>
-                                    <div class="controls fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="controls fileinput fileinput-exists" data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput"
                                              style="width: 200px; height: 150px;"></div>
                                         <div class="controls-label">
-                                            <input class="input-file uniform_on" th:type="file" th:name="file" />
+                                            <input class="input-file uniform_on" th:type="file" th:name="file" th:src="@{/Upload/name}"/>
                                             <p></p>
                                             <a href="#" class="btn btn-success fileinput-exists"
                                                data-dismiss="fileinput">Remove</a>
