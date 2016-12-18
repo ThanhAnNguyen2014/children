@@ -99,7 +99,7 @@
     <div class="row-fluid">
 
         <!-- start: Main Menu -->
-        <div th:replace="adhome::ad-menu"></div>
+        <th:block th:replace="adhome:: ad-menu"></th:block>
         <!-- end: Main Menu -->
 
         <!-- start: Content -->
@@ -107,7 +107,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="icon-home"></i>
-                    <a href="index.html">Home</a>
+                    <a href="../index.html">Home</a>
                     <i class="icon-angle-right"></i>
                 </li>
                 <li><a href="#">Bài viết</a></li>
@@ -128,7 +128,7 @@
                             <thead >
                             <tr >
                                 <th>Id</th>
-                                <th>Tiêu đề</th>
+                                <th width="20%">Tiêu đề</th>
                                 <th>Chủ đề</th>
                                 <th>Ngày tạo</th>
                                 <th>Status</th>
@@ -142,23 +142,18 @@
                                 <td class="center" th:text="${p.tenbaiviet}"></td>
                                 <td class="center" th:text="${p.id_chude.tenchude}"></td>
                                 <td class="center" th:text="${p.ngaytao}"></td>
-                                <td class="center" th:text="${p.status}"></td>
-                                <td class="center" th:text="${p.moi}"></td>
+                                <td class="center" ><button class="btn btn-success" th:text="${p.status == true ? 'Mở khóa': 'Khóa'}"></button></td>
+                                <td class="center" ><button class="btn btn-primary" th:text="${p.moi == true ? 'Cũ': 'Mới'}"></button></td>
                                 <td class="center">
-                                    <a class="btn btn-success" href="#">
+                                    <a class="btn btn-success" th:href="@{'../admin/detail/post/'+${p.id}}">
                                         <i class="halflings-icon white zoom-in"></i>
                                     </a>
-                                    <a class="btn btn-info" href="#">
+                                    <a class="btn btn-info" th:href="@{'../admin/edit/post/'+${p.id}}">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
+
                                 </td>
                             </tr>
-
-
-
                             </tbody>
                         </table>
                     </div>

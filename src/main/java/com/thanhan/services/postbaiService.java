@@ -1,7 +1,6 @@
 package com.thanhan.services;
 
 import com.thanhan.models.postbai;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import java.util.List;
 public interface postbaiService {
     List<postbai> findAll();
     postbai findById(Long id);
-    postbai Create (postbai pos);
-    postbai Edit (postbai pos);
+    postbai Save (postbai pos);
     void Delete (Long id);
 }

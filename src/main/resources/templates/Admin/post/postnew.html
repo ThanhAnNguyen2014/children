@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:type="http://www.w3.org/1999/xhtml">
+<!--th:replace="layout::site-head"-->
+<head>
+    <title>Admin Page</title>
+    <head th:replace="layout::ad-site-header"/>
+</head>
+
+<body>
+<!-- start: Header -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse"
+               data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Baby Time</a>
+
+            <!-- start: Header Menu -->
+            <div class="nav-no-collapse header-nav">
+                <ul class="nav pull-right">
+
+                    <!-- start: Message Dropdown -->
+                    <li class="dropdown hidden-phone">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="halflings-icon white envelope"></i>
+                        </a>
+                        <ul class="dropdown-menu messages">
+                            <li class="dropdown-menu-title">
+                                <span>Hộp thư đến</span>
+                                <a href="#refresh"><i class="icon-repeat"></i></a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"/></span>
+                                    <span class="header">
+											<span class="from">
+										    	Thanh An Nguyen
+										     </span>
+											<span class="time">
+										    	6 min
+										    </span>
+										</span>
+                                    <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"/></span>
+                                    <span class="header">
+											<span class="from">
+										    	Duc Thai Tran
+										     </span>
+											<span class="time">
+										    	56 min
+										    </span>
+										</span>
+                                    <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-menu-sub-footer">View all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: Message Dropdown -->
+                    <!-- start: User Dropdown -->
+                    <li class="dropdown">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="halflings-icon white user"></i> Thanh An Nguyen
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-menu-title">
+                                <span>Account Settings</span>
+                            </li>
+                            <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
+                            <li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                    <!-- end: User Dropdown -->
+                </ul>
+            </div>
+            <!-- end: Header Menu -->
+
+        </div>
+    </div>
+</div>
+<!-- start: Header -->
+
+<div class="container-fluid-full">
+    <div class="row-fluid">
+
+        <!-- start: Main Menu -->
+        <th:block th:include="adhome:: ad-menu"></th:block>
+        <!-- end: Main Menu -->
+
+        <!-- start: Content -->
+
+        <!-- <div>
+             <form class="form-horizontal" th:object="${post}" th:action="@{/product}" method="post">
+                 <input type="hidden" th:field="*{id}"/>
+                 <input type="hidden" th:field="*{version}"/>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">Product Id:</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:field="*{productId}"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">Description:</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:field="*{description}"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">Price:</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:field="*{price}"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label">Image Url:</label>
+                     <div class="col-sm-10">
+                         <input type="text" class="form-control" th:field="*{imageUrl}"/>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <button type="submit" class="btn btn-default">Submit</button>
+                 </div>
+             </form>
+         </div>-->
+        <div id="content" class="span10">
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <i class="icon-edit"></i>
+                    <a href="#">Tạo bài viết</a>
+                </li>
+            </ul>
+
+            <div class="row-fluid sortable">
+                <div class="box span12">
+                    <div class="box-header">
+                        <h2><i class="halflings-icon edit"></i><span class="break"></span>Tạo bài viết</h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                            <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                            <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal" th:object="${post}" th:action="@{/post}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" th:field="*{id}"/>
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="selectError" >Chủ đề: </label>
+                                    <div class="controls">
+                                        <select th:field="*{id_chude}" >
+                                            <option th:each="p : ${title}"
+                                                    th:value="${p.id}"
+                                                    th:text="${p.tenchude}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead" >Tiêu đề: </label>
+                                    <div class="controls">
+                                        <input type="text" class="span6 typeahead" th:field="*{tenbaiviet}"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="date01">Ngày tạo: </label>
+                                    <div class="controls">
+                                        <input type="text" class=" datepicker" id="date01"  th:field="*{ngaytao}"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Loại bài viết: </label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" th:field="*{moi}" name="optionsRadios" id="optionsRadios1" value="false" th:checked="false"/>
+                                            Bài viết mới
+                                        </label>
+                                        <div style="clear:both"></div>
+                                        <label class="radio">
+                                            <input type="radio" th:field="*{moi}" name="optionsRadios" id="optionsRadios2" value="true" th:checked="true"/>
+                                            Bài viết cũ
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="control-group hidden-phone">
+                                    <label class="control-label" for="textarea2">Nội dung: </label>
+                                    <div class="controls">
+                                        <textarea class="cleditor" id="textarea2" rows="3" th:field="*{noidung}"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Chọn ảnh: </label><br/>
+                                    <div class="controls fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                             style="width: 200px; height: 150px;"></div>
+                                        <div class="controls-label">
+                                            <input class="input-file uniform_on" th:type="file" th:name="file" />
+                                            <p></p>
+                                            <a href="#" class="btn btn-success fileinput-exists"
+                                               data-dismiss="fileinput">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="reset" class="btn">Cancel</button>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div><!--/span-->
+
+            </div><!--/row-->
+
+            <!-- end: Content -->
+        </div><!--/#content.span10-->
+        <!--/row-->
+    </div><!--/.fluid-container-->
+</div>
+<!-- end: Content -->
+
+
+<div class="clearfix"></div>
+
+
+<footer th:replace="layout::ad-site-footer">
+
+</footer>
+<section th:replace="layout::ad-script-footer">
+
+</section>
+</body>
+</html>

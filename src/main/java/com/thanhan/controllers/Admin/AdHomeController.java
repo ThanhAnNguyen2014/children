@@ -16,15 +16,15 @@ import java.util.List;
 public class AdHomeController {
     @Autowired
     private postbaiService postbService;
-    @RequestMapping("/admin")
+    @RequestMapping("admin/index")
     public String AdHome(){
         return "Admin/index";
     }
 
-    @RequestMapping("/admin/listpost")
+    @RequestMapping("admin/listpost")
     public String post(Model model){
         List<postbai> postbais=postbService.findAll();
         model.addAttribute("postbais", postbais);
-        return "Admin/listpost";
+        return "Admin/post/listpost";
     }
 }

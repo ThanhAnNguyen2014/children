@@ -15,13 +15,11 @@ public class postbai {
     private Long id;
     @Column(nullable = false)
     private String tenbaiviet;
-
     private String url;
     private Long luocxem;
     private String image;
     @Lob @Column(nullable = false)
     private String noidung;
-    @Column(nullable = false)
     private Date ngaytao;
     private boolean status;
     private boolean moi;
