@@ -1,6 +1,9 @@
 package com.thanhan.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -20,6 +23,7 @@ public class postbai {
     private String image;
     @Lob @Column(nullable = false)
     private String noidung;
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date ngaytao;
     private boolean status;
     private boolean moi;

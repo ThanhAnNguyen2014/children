@@ -211,17 +211,20 @@
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Chọn ảnh: </label><br/>
+
                                     <div class="controls fileinput fileinput-exists" data-provides="fileinput">
-                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"
-                                             style="width: 200px; height: 150px;"></div>
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <img th:if="*{image}" th:src="'/Upload/'+*{image}"/>
+                                        </div>
                                         <div class="controls-label">
-                                            <input class="input-file uniform_on" th:type="file" th:name="file" th:src="@{/Upload/name}"/>
+                                            <input class="input-file uniform_on" th:type="file" th:name="file" />
                                             <p></p>
                                             <a href="#" class="btn btn-success fileinput-exists"
-                                               data-dismiss="fileinput">Remove</a>
+                                                   data-dismiss="fileinput">Remove</a>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                     <button type="reset" class="btn">Cancel</button>
